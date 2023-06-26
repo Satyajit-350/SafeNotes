@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.activity.ui.fragments.audioNotes.AudioNoteFragment">
+
+    <EditText
+        android:id="@+id/title_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:background="@color/transparent"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textCapSentences"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.example.safenotes.utils.WaveFormView
+        android:id="@+id/wave_form_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginVertical="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_et"/>
+
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/record_animation"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_marginVertical="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mic_json" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="00:00:00"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wave_form_view" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/recording_cv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginVertical="50dp"
+        android:backgroundTint="#DC3D3D"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+        <ImageView
+            android:id="@+id/rec_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:src="@drawable/ic_mic"
+            tools:layout_editor_absoluteX="147dp"
+            tools:layout_editor_absoluteY="455dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Quality"
+        android:textSize="18sp"
+        android:layout_marginVertical="10dp"
+        android:fontFamily="@font/montserrat_medium"
+        app:layout_constraintEnd_toEndOf="@+id/timerTextView"
+        app:layout_constraintStart_toStartOf="@+id/timerTextView"
+        app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/save_rec"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/light_blue"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recording_cv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/recording_cv"
+        app:layout_constraintTop_toTopOf="@+id/recording_cv">
+
+        <ImageView
+            android:id="@+id/save_pause_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/baseline_check_24" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cancel_rec"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/light_blue"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recording_cv"
+        app:layout_constraintEnd_toStartOf="@+id/recording_cv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recording_cv">
+
+        <ImageView
+            android:id="@+id/cancel_pause_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/outline_close_24" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
