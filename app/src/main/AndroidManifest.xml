@@ -21,7 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".presentation.activity.register.RegisterActivity"
-            android:exported="true" >
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,8 @@
         <activity
             android:name=".presentation.activity.HomeActivity"
             android:exported="true"
-            android:theme="@style/Theme.SafeNotes.NoActionBar" />
+            android:theme="@style/Theme.SafeNotes.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".presentation.MainActivity"
             android:exported="true">

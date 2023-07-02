@@ -15,7 +15,7 @@ interface NotesApi {
     @GET("/note")
     suspend fun getNotes() : Response<List<NotesResponse>>
 
-    @POST("note")
+    @POST("/note")
     suspend fun createNote(@Body notesRequest: NotesRequest): Response<NotesResponse>
 
     @PUT("/note/{noteId}")

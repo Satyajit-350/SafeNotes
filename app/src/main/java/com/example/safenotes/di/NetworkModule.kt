@@ -1,5 +1,6 @@
 package com.example.safenotes.di
 
+import com.example.safenotes.retrofit.AudioApi
 import com.example.safenotes.retrofit.AuthInterceptor
 import com.example.safenotes.retrofit.NotesApi
 import com.example.safenotes.retrofit.QuotesApi
@@ -66,5 +67,12 @@ object NetworkModule {
     @Provides
     fun providesQuotesApi(@Named("NormalRetrofit") retrofit: Retrofit): QuotesApi{
         return retrofit.create(QuotesApi::class.java)
+    }
+
+    //for audio
+    @Singleton
+    @Provides
+    fun providesAudioApi(@Named("AuthRetrofit") retrofit: Retrofit): AudioApi{
+        return retrofit.create(AudioApi::class.java)
     }
 }

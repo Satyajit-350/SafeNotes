@@ -17,16 +17,21 @@ class QuotesRepository @Inject constructor(private val quotesApi: QuotesApi) {
 
     suspend fun getQuote(){
         Log.d("TAG_NETWORK_HIT","hit occur for quotes")
-        _quotesLiveData.postValue(NetworkResult.Loading())
-        val response = quotesApi.getQuote()
-        if(response.isSuccessful && response.body()!=null){
-            _quotesLiveData.postValue(NetworkResult.Success(response.body()!!))
-        }else if (response.errorBody() != null) {
-            val errObj = JSONObject(response.errorBody()!!.charStream().readText())
-            _quotesLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
-        } else {
-            _quotesLiveData.postValue(NetworkResult.Error("Something went wrong"))
+        try {
+            _quotesLiveData.postValue(NetworkResult.Loading())
+            val response = quotesApi.getQuote()
+            if(response.isSuccessful && response.body()!=null){
+                _quotesLiveData.postValue(NetworkResult.Success(response.body()!!))
+            }else if (response.errorBody() != null) {
+                val errObj = JSONObject(response.errorBody()!!.charStream().readText())
+                _quotesLiveData.postValue(NetworkResult.Error(errObj.getString("message")))
+            } else {
+                _quotesLiveData.postValue(NetworkResult.Error("Something went wrong"))
+            }
+        }catch (e:Exception){
+            e.printStackTrace()
         }
+
     }
 
 

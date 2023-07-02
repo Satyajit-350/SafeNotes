@@ -117,8 +117,38 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cancel_btn"
-            app:layout_constraintTop_toBottomOf="@+id/add_link_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/textView10"
             app:layout_constraintWidth_percent="0.45" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Camera"
+            app:layout_constraintEnd_toEndOf="@+id/add_image_card_view"
+            app:layout_constraintStart_toStartOf="@+id/add_image_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/add_image_card_view" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Audio"
+            app:layout_constraintEnd_toEndOf="@+id/add_audio_card_view"
+            app:layout_constraintStart_toStartOf="@+id/add_audio_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/add_audio_card_view" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium"
+            android:text="Attach"
+            app:layout_constraintEnd_toEndOf="@+id/add_link_card_view"
+            app:layout_constraintStart_toStartOf="@+id/add_link_card_view"
+            app:layout_constraintTop_toBottomOf="@+id/add_link_card_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
