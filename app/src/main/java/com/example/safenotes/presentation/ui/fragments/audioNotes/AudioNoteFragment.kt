@@ -17,10 +17,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.safenotes.R
 import com.example.safenotes.databinding.FragmentAudioNoteBinding
 import com.example.safenotes.models.audio.AudioNoteRequest
 import com.example.safenotes.presentation.ui.fragments.audioNotes.bottomSheet.BottomSheetSaveAudio
+import com.example.safenotes.utils.NetworkResult
 import com.example.safenotes.utils.Timer
 import com.example.safenotes.utils.listeners.AudioBottomSheetListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -64,6 +67,24 @@ class AudioNoteFragment : Fragment(), Timer.OnTimerListener, AudioBottomSheetLis
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        audioNotesViewModel.statusLiveData.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is NetworkResult.Error -> {
+                    Toast.makeText(context,"Something went wrong",Toast.LENGTH_SHORT).show()
+                }
+                is NetworkResult.Loading ->{
+
+                }
+                is NetworkResult.Message ->{
+
+                }
+                is NetworkResult.Success -> {
+                    findNavController().popBackStack()
+                }
+            }
+        })
 
         binding.recordingCv.setOnClickListener {
 
@@ -241,7 +262,7 @@ class AudioNoteFragment : Fragment(), Timer.OnTimerListener, AudioBottomSheetLis
 
         val audioNote = AudioNoteRequest(binding.titleEt.text.toString(),fileName,filePath,duration,ampFilePath)
 
-//        audioNotesViewModel.createAudioNote(audioNote)
+        audioNotesViewModel.createAudioNote(audioNote)
 
         stopRecording()
 
